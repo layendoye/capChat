@@ -1,0 +1,29 @@
+#theform{
+    box-shadow:2px 2px 20px gray;
+    animation: bordering 2s infinite;
+    transition: all 500ms;
+}
+
+@keyframes bordering{
+    0%{
+        border-radius:25px 0px 25px 0px;
+    }
+    40%{
+        border-radius:25px 0px 25px 0px;
+    }
+    50%{
+        border-radius:0px 25px 0px 25px;
+    }
+
+    90%{
+        border-radius:0px 25px 0px 25px;
+    }
+    100%{
+        border-radius:25px 0px 25px 0px;
+    }
+} 
+
+#welcome{
+    box-shadow:2px 2px 15px gray;
+    border-radius:25px;
+}

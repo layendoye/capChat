@@ -1,0 +1,32 @@
+Html----------------
+
+1. ajouter ce script dans le header du formulaire 
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+
+2. Ajouter le bloc de captcha a l'interrieur d'un formulaire
+    <div class="g-recaptcha mt-2" data-sitekey="secret_key"> </div>
+    'secret_key' sera egal a notre clé de sécurité du site (fourni par google)
+
+Php ----------------
+
+3. Creer d'un variable $key & $url
+    $url = 'https://www.google.com/recaptcha/api/siteverify';
+    (site fournis par google pour la verification de captcha)
+
+    $key = 'clé de securité privé';
+    (fourni par google) 
+
+4. Recupérer le captcha via dans un variable
+    $captcha = ($_POST['g-recaptcha-response']);
+
+5. Faire la requette en envoyant les parametre suivant
+    $response = file_get_contents($url.'?secret='.$key.'&response='.$captcha);
+    // cad recuperer le contenu de ce url avec secret = a $key et response = $captcha
+
+6. Decoder les donné Json retourne par google 
+    $response = json_decode($response);
+
+7. La condition
+     if($response->success == true){
+         // code a executer si le captcha a éte compléter
+    }
